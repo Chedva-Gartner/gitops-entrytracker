@@ -1,20 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: DB-mysql
+  name: mysql
   namespace: argocd
 spec:
-  project: entrytracker
+  project: default
+
   source:
-    repoURL: https://github.com/Chedva-Gartner/gitops-entrytracker
-    path: apps/DB-mysql
-    targetRevision: main
+    chart: mysql
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 9.23.0
     helm:
       valueFiles:
-        - values.yaml
+        - apps/platform/mysql/values.yaml
+
   destination:
     server: https://kubernetes.default.svc
-    namespace: app2
+    namespace: mysql
+
   syncPolicy:
     automated:
       prune: true
