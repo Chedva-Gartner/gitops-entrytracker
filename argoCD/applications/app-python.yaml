@@ -7,7 +7,7 @@ spec:
   project: entrytracker
   source:
     repoURL: https://github.com/Chedva-Gartner/gitops-entrytracker
-    path: apps/python-app
+    path: apps/app(python)
     targetRevision: main
     helm:
       valueFiles:
@@ -19,3 +19,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
